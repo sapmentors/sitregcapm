@@ -1,0 +1,20 @@
+{
+    "name": "sitregcapm",
+    "description": "SITreg implemented in the SAP Cloud Application Programming Model",
+    "repository": "https://github.com/sapmentors/sitregcapm",
+    "license": "Apache-2.0",
+    "version": "0.0.1",
+    "engines": {
+        "node": "^8.9"
+    },
+    "files": [],
+    "dependencies": {
+        "@sap/cds": "^3.5.2",
+        "express": "^4.16.4"
+    },
+    "scripts": {
+        "start": "cds run",
+        "build": "cds build/all --clean",
+        "deploy": "cds deploy"
+    }
+}
