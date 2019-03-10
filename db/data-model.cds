@@ -31,9 +31,8 @@ entity RelationToSAP {
 entity Event: managed {
     key ID                  : Integer; 
         Location            : String(100) not null;
-        EventDate           : Date;
-        StartTime           : Time;
-        EndTime             : Time;
+        EventStart          : Timestamp not null;
+        EventEnd            : Timestamp;
         MaxParticipants     : Integer not null;
         HomepageURL         : URL;
         Description         : String(100);
