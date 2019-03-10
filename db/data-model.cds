@@ -1,5 +1,5 @@
 namespace com.sap.sapmentors.sitregcapm;
-using { LanguageCode, Country, managed } from '@sap/cds/common';
+using { LanguageCode, Country, managed,User } from '@sap/cds/common';
 
 // @cds.autoexpose @cds.persistence.skip:'if-unused'
 abstract entity CodeList {
@@ -37,4 +37,14 @@ entity Event: managed {
         Visible             : Boolean;
         HasPreEveningEvent  : Boolean;
         HasPostEveningEvent : Boolean;
+};
+entity Organizers: managed {
+        key UserName          	: User;
+            FirstName           : String(100) not null;
+            LastName        	: String(100) not null;
+            EMail            	: String(256) not null;
+            MobilePhone       	: String(25);
+            Status            	: String(1);
+            RequestTimeStamp    : Timestamp;
+            StatusSetTimeStamp  : Timestamp; 
 };
