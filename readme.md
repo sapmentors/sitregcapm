@@ -31,6 +31,13 @@ You can now access the services via
  http://localhost:4004
 ```
 
+### Initialize the Local Database
+Run the following command to Initialize your local SQLite DB:
+```sh
+cds deploy --to sqlite:db/sitregcapm.db
+```
+Do not forget to refresh the local database whenever you changed the datamodel
+
 ### Recommended Extensions
 Local execution makes use of [SQLite3](https://www.sqlite.org/index.html) as database. To get an insight into the database from visual studio code we recommend to install the [SQLite Extension](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) from the Visual Studio Marketplace   
 

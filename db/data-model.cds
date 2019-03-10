@@ -1,6 +1,10 @@
 namespace com.sap.sapmentors.sitregcapm;
 using { LanguageCode, Country, managed } from '@sap/cds/common';
 
+//General types
+type URL: String(256);
+type AnswerOption: Integer enum { yes = 1; no = 2; maybe = 3; }; 
+
 // @cds.autoexpose @cds.persistence.skip:'if-unused'
 abstract entity CodeList {
     name  : localized String(255) @title:'{i18n>Name}';
@@ -27,14 +31,33 @@ entity RelationToSAP {
 entity Event: managed {
     key ID                  : Integer; 
         Location            : String(100) not null;
-        EventDate           : Timestamp not null;
-        StartTime           : Timestamp;
-        EndTime             : Timestamp;
+        EventDate           : Date;
+        StartTime           : Time;
+        EndTime             : Time;
         MaxParticipants     : Integer not null;
-        HomepageURL         : String(256);
+        HomepageURL         : URL;
         Description         : String(100);
         Type                : Association to EventType;
         Visible             : Boolean;
         HasPreEveningEvent  : Boolean;
         HasPostEveningEvent : Boolean;
+};
+
+entity Participant: managed{
+    key ID               : Integer;
+        Event            : Association to Event;
+        RegistrationTime : DateTime;
+        FirstName        : String(100) not null;
+        LastName         : String(100) not null;
+        EMail            : String(256) not null;
+        MobilePhone      : String(25);
+        BioURL           : URL;
+        Twitter          : String(15);
+        RSVP             : Boolean not null; 
+        PreEveningEvent  : AnswerOption not null; 
+        PostEveningEvent : AnswerOption not null; 
+        RelationToSAP    : Association to RelationToSAP;
+        Receipt          : Boolean;
+        ReceiptCompany   : String(256);
+        ReceiptAddress   : LargeString;
 };
