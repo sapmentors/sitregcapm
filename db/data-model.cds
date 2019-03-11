@@ -77,8 +77,6 @@ entity Participant: managed{
         ReceiptAddress   : LargeString;
 };
 
-
-
 entity Ticket: managed {
     key Participant      : Association to Participant;
         Event            : Association to Event;
