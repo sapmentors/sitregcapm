@@ -3,8 +3,11 @@ using { LanguageCode, Country, managed,User } from '@sap/cds/common';
 
 //General types
 type URL: String(256);
+type HashT          : Binary(32);
 type AnswerOption: Integer enum { yes = 1; no = 2; maybe = 3; }; 
 type DeviceT : String(36);
+type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
+
 // @cds.autoexpose @cds.persistence.skip:'if-unused'
 abstract entity CodeList {
     name  : localized String(255) @title:'{i18n>Name}';
@@ -30,10 +33,10 @@ entity RelationToSAP {
 
 entity Event: managed {
     key ID                  : Integer; 
+        Tickets             : Association to many Tickets on Tickets.Event = $self;
         Location            : String(100) not null;
-        EventDate           : Date;
-        StartTime           : Time;
-        EndTime             : Time;
+        EventStart          : Timestamp not null;
+        EventEnd            : Timestamp;
         MaxParticipants     : Integer not null;
         HomepageURL         : URL;
         Description         : String(100);
@@ -51,7 +54,7 @@ entity Organizers: managed {
             MobilePhone       	: String(25);
             Status            	: String(1);
             RequestTimeStamp    : Timestamp;
-            StatusSetTimeStamp  : Timestamp; 
+            StatusSetTimeStamp  : Timestamp;   
 };
 
 entity Participant: managed{
@@ -72,16 +75,19 @@ entity Participant: managed{
         ReceiptCompany   : String(256);
         ReceiptAddress   : LargeString;
 };
+
 entity CoOrganizers : managed {
         key EventID  : Association to Event;
         key UserName : User;
             Active   : String(1); // Y = Yes / N = No
 };
+
 entity Devices : managed {
         key EventID  : Association to Event;
         key DeviceID : DeviceT;
             Active   : String(1); // Y = Yes / N = No
 };
+
 entity PrintQueues : managed {
         key ParticipantID    : Association to Participant;
             EventID          : Association to Event;
@@ -89,4 +95,11 @@ entity PrintQueues : managed {
             LastName         : String(100) not null;
             Twitter          : String(15);
             PrintStatus      : String(1) not null; // Q = queued, S = sent, P = printed
+};
+
+entity Tickets: managed {
+    key Participant      : Association to Participant;
+        Event            : Association to Event;
+        TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
+        SHA256HASH       : HashT;        
 };
