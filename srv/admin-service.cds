@@ -6,4 +6,5 @@ service AdminService {
     entity Events as projection on sitreg.Event;
     entity Organizers as projection on sitreg.Organizers;
     entity Participants as projection on sitreg.Participant;
+
 }
