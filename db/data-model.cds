@@ -2,19 +2,10 @@ namespace com.sap.sapmentors.sitregcapm;
 using { LanguageCode, Country, managed,User } from '@sap/cds/common';
 
 //General types
-type URL: String(256);
-type UserT: String(256);
-type SDate: DateTime;
-type HashT: Binary(32);
-type AnswerOption: Integer enum { yes = 1; no = 2; maybe = 3; }; 
+type URL            : String(256);
+type HashT          : Binary(32);
+type AnswerOption   : Integer enum { yes = 1; no = 2; maybe = 3; }; 
 type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
-
-type HistoryT {
-    CreatedBy : UserT;
-    CreatedAt : SDate;
-    ChangedBy : UserT;
-    ChangedAt : SDate;
-};
 
 
 
@@ -64,8 +55,7 @@ entity Organizers: managed {
             MobilePhone       	: String(25);
             Status            	: String(1);
             RequestTimeStamp    : Timestamp;
-            StatusSetTimeStamp  : Timestamp; 
-            History            : HistoryT;
+            StatusSetTimeStamp  : Timestamp;   
 };
 
 entity Participant: managed{
@@ -89,10 +79,9 @@ entity Participant: managed{
 
 
 
-entity Ticket {
+entity Ticket: managed {
     key Participant      : Association to Participant;
         Event            : Association to Event;
         TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
-        SHA256HASH       : HashT;
-        History          : HistoryT;
+        SHA256HASH       : HashT;        
     };
