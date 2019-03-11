@@ -2,8 +2,12 @@ namespace com.sap.sapmentors.sitregcapm;
 using { LanguageCode, Country, managed,User } from '@sap/cds/common';
 
 //General types
-type URL: String(256);
-type AnswerOption: Integer enum { yes = 1; no = 2; maybe = 3; }; 
+type URL            : String(256);
+type HashT          : Binary(32);
+type AnswerOption   : Integer enum { yes = 1; no = 2; maybe = 3; }; 
+type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
+
+
 
 // @cds.autoexpose @cds.persistence.skip:'if-unused'
 abstract entity CodeList {
@@ -30,6 +34,7 @@ entity RelationToSAP {
 
 entity Event: managed {
     key ID                  : Integer; 
+        Tickets             : Association to many Tickets on Tickets.Event = $self;
         Location            : String(100) not null;
         EventStart          : Timestamp not null;
         EventEnd            : Timestamp;
@@ -50,7 +55,7 @@ entity Organizers: managed {
             MobilePhone       	: String(25);
             Status            	: String(1);
             RequestTimeStamp    : Timestamp;
-            StatusSetTimeStamp  : Timestamp; 
+            StatusSetTimeStamp  : Timestamp;   
 };
 
 entity Participant: managed{
@@ -71,3 +76,10 @@ entity Participant: managed{
         ReceiptCompany   : String(256);
         ReceiptAddress   : LargeString;
 };
+
+entity Tickets: managed {
+    key Participant      : Association to Participant;
+        Event            : Association to Event;
+        TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
+        SHA256HASH       : HashT;        
+    };
