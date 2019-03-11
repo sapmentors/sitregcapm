@@ -34,7 +34,7 @@ entity RelationToSAP {
 
 entity Event: managed {
     key ID                  : Integer; 
-        Tickets             : Association to many Ticket on Tickets.Event = $self;
+        Tickets             : Association to many Tickets on Tickets.Event = $self;
         Location            : String(100) not null;
         EventStart          : Timestamp not null;
         EventEnd            : Timestamp;
@@ -77,7 +77,7 @@ entity Participant: managed{
         ReceiptAddress   : LargeString;
 };
 
-entity Ticket: managed {
+entity Tickets: managed {
     key Participant      : Association to Participant;
         Event            : Association to Event;
         TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
