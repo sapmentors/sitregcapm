@@ -9,5 +9,5 @@ service AdminService {
     entity Participants as projection on sitreg.Participant;
     entity Devices as projection on sitreg.Devices;
     entity PrintQueues as projection on sitreg.PrintQueues;
-    entity Tickets as projection on sitreg.Ticket;
+    entity Tickets as projection on sitreg.Tickets;
 }
