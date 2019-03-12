@@ -39,6 +39,7 @@
         <EntitySet Name="Events" EntityType="AdminService.Events"/>
         <EntitySet Name="Organizers" EntityType="AdminService.Organizers"/>
         <EntitySet Name="Participants" EntityType="AdminService.Participants"/>
+        <EntitySet Name="ParticipantsPerEventRead" EntityType="AdminService.ParticipantsPerEventRead"/>
         <EntitySet Name="PrintQueues" EntityType="AdminService.PrintQueues"/>
         <EntitySet Name="RelationsToSAP" EntityType="AdminService.RelationsToSAP"/>
         <EntitySet Name="Tickets" EntityType="AdminService.Tickets"/>
@@ -187,6 +188,17 @@
         <Property Name="Event_ID" Type="Edm.Int32"/>
         <Property Name="RelationToSAP_RelationToSAP" Type="Edm.String" MaxLength="1"/>
         <Property Name="RelationToSAP_Lang" Type="Edm.String" MaxLength="5"/>
+      </EntityType>
+      <EntityType Name="ParticipantsPerEventRead">
+        <Key>
+          <PropertyRef Name="ID"/>
+        </Key>
+        <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="Location" Type="Edm.String" MaxLength="100" Nullable="false"/>
+        <Property Name="EventStart" Type="Edm.DateTimeOffset" Nullable="false"/>
+        <Property Name="EventEnd" Type="Edm.DateTimeOffset"/>
+        <Property Name="MaxParticipants" Type="Edm.Int32" Nullable="false"/>
+        <Property Name="HomepageURL" Type="Edm.String" MaxLength="256"/>
       </EntityType>
       <EntityType Name="PrintQueues">
         <Key>

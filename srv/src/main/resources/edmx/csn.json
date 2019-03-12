@@ -2,7 +2,7 @@
   "definitions": {
     "AdminService": {
       "kind": "service",
-      "@source": "srv/admin-service.cds"
+      "@source": "srv\\admin-service.cds"
     },
     "AdminService.EventTypes": {
       "kind": "entity",
@@ -684,14 +684,15 @@
           "@cds.persistence.name": "MODIFIEDBY"
         },
         "Event": {
-          "origin": "com.sap.sapmentors.sitregcapm.CoOrganizers..Event",
-          "indexNo": 5,
           "value": {
-            "=": "CoOrganizers.Event"
+            "=": "Event"
           },
+          "redirected": true,
+          "target": "AdminService.Events",
+          "indexNo": 5,
+          "origin": "com.sap.sapmentors.sitregcapm.CoOrganizers..Event",
           "key": true,
           "type": "cds.Association",
-          "target": "AdminService.Events",
           "foreignKeys": {
             "ID": {
               "origin": "com.sap.sapmentors.sitregcapm.CoOrganizers..Event.ID",
@@ -701,7 +702,6 @@
               "@cds.persistence.name": "ID"
             }
           },
-          "redirected": true,
           "@cds.persistence.name": "EVENT"
         },
         "UserName": {
@@ -739,7 +739,7 @@
           "type": "cds.Integer",
           "key": true,
           "value": {
-            "=": "CoOrganizers.Event_ID"
+            "=": "Event_ID"
           },
           "origin": "com.sap.sapmentors.sitregcapm.CoOrganizers..Event_ID",
           "@odata.foreignKey4": "Event",
@@ -843,13 +843,14 @@
           "@cds.persistence.name": "ID"
         },
         "Event": {
-          "origin": "com.sap.sapmentors.sitregcapm.Participant..Event",
-          "indexNo": 6,
           "value": {
-            "=": "Participant.Event"
+            "=": "Event"
           },
-          "type": "cds.Association",
+          "redirected": true,
           "target": "AdminService.Events",
+          "indexNo": 6,
+          "origin": "com.sap.sapmentors.sitregcapm.Participant..Event",
+          "type": "cds.Association",
           "foreignKeys": {
             "ID": {
               "origin": "com.sap.sapmentors.sitregcapm.Participant..Event.ID",
@@ -859,7 +860,6 @@
               "@cds.persistence.name": "ID"
             }
           },
-          "redirected": true,
           "@cds.persistence.name": "EVENT"
         },
         "RegistrationTime": {
@@ -1094,7 +1094,7 @@
         "Event_ID": {
           "type": "cds.Integer",
           "value": {
-            "=": "Participant.Event_ID"
+            "=": "Event_ID"
           },
           "origin": "com.sap.sapmentors.sitregcapm.Participant..Event_ID",
           "@odata.foreignKey4": "Event",
@@ -1205,14 +1205,15 @@
           "@cds.persistence.name": "MODIFIEDBY"
         },
         "Event": {
-          "origin": "com.sap.sapmentors.sitregcapm.Devices..Event",
-          "indexNo": 5,
           "value": {
-            "=": "Devices.Event"
+            "=": "Event"
           },
+          "redirected": true,
+          "target": "AdminService.Events",
+          "indexNo": 5,
+          "origin": "com.sap.sapmentors.sitregcapm.Devices..Event",
           "key": true,
           "type": "cds.Association",
-          "target": "AdminService.Events",
           "foreignKeys": {
             "ID": {
               "origin": "com.sap.sapmentors.sitregcapm.Devices..Event.ID",
@@ -1222,7 +1223,6 @@
               "@cds.persistence.name": "ID"
             }
           },
-          "redirected": true,
           "@cds.persistence.name": "EVENT"
         },
         "DeviceID": {
@@ -1258,7 +1258,7 @@
           "type": "cds.Integer",
           "key": true,
           "value": {
-            "=": "Devices.Event_ID"
+            "=": "Event_ID"
           },
           "origin": "com.sap.sapmentors.sitregcapm.Devices..Event_ID",
           "@odata.foreignKey4": "Event",
@@ -1370,13 +1370,14 @@
           "@cds.persistence.name": "PARTICIPANT"
         },
         "Event": {
-          "origin": "com.sap.sapmentors.sitregcapm.PrintQueues..Event",
-          "indexNo": 6,
           "value": {
-            "=": "PrintQueues.Event"
+            "=": "Event"
           },
-          "type": "cds.Association",
+          "redirected": true,
           "target": "AdminService.Events",
+          "indexNo": 6,
+          "origin": "com.sap.sapmentors.sitregcapm.PrintQueues..Event",
+          "type": "cds.Association",
           "foreignKeys": {
             "ID": {
               "origin": "com.sap.sapmentors.sitregcapm.PrintQueues..Event.ID",
@@ -1386,7 +1387,6 @@
               "@cds.persistence.name": "ID"
             }
           },
-          "redirected": true,
           "@cds.persistence.name": "EVENT"
         },
         "FirstName": {
@@ -1456,7 +1456,7 @@
         "Event_ID": {
           "type": "cds.Integer",
           "value": {
-            "=": "PrintQueues.Event_ID"
+            "=": "Event_ID"
           },
           "origin": "com.sap.sapmentors.sitregcapm.PrintQueues..Event_ID",
           "@odata.foreignKey4": "Event",
@@ -1568,13 +1568,14 @@
           "@cds.persistence.name": "PARTICIPANT"
         },
         "Event": {
-          "origin": "com.sap.sapmentors.sitregcapm.Tickets..Event",
-          "indexNo": 6,
           "value": {
-            "=": "Tickets.Event"
+            "=": "Event"
           },
-          "type": "cds.Association",
+          "redirected": true,
           "target": "AdminService.Events",
+          "indexNo": 6,
+          "origin": "com.sap.sapmentors.sitregcapm.Tickets..Event",
+          "type": "cds.Association",
           "foreignKeys": {
             "ID": {
               "origin": "com.sap.sapmentors.sitregcapm.Tickets..Event.ID",
@@ -1584,7 +1585,6 @@
               "@cds.persistence.name": "ID"
             }
           },
-          "redirected": true,
           "@cds.persistence.name": "EVENT"
         },
         "TicketUsed": {
@@ -1628,7 +1628,7 @@
         "Event_ID": {
           "type": "cds.Integer",
           "value": {
-            "=": "Tickets.Event_ID"
+            "=": "Event_ID"
           },
           "origin": "com.sap.sapmentors.sitregcapm.Tickets..Event_ID",
           "@odata.foreignKey4": "Event",
@@ -1637,9 +1637,76 @@
       },
       "@cds.persistence.name": "ADMINSERVICE_TICKETS"
     },
+    "AdminService.ParticipantsPerEventRead": {
+      "kind": "entity",
+      "source": "com.sap.sapmentors.sitregcapm.Event",
+      "elements": {
+        "ID": {
+          "value": {
+            "=": "ID"
+          },
+          "indexNo": 1,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..ID",
+          "key": true,
+          "type": "cds.Integer",
+          "@cds.persistence.name": "ID"
+        },
+        "Location": {
+          "value": {
+            "=": "Location"
+          },
+          "indexNo": 2,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..Location",
+          "type": "cds.String",
+          "notNull": true,
+          "length": 100,
+          "@cds.persistence.name": "LOCATION"
+        },
+        "EventStart": {
+          "value": {
+            "=": "EventStart"
+          },
+          "indexNo": 3,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..EventStart",
+          "type": "cds.Timestamp",
+          "notNull": true,
+          "@cds.persistence.name": "EVENTSTART"
+        },
+        "EventEnd": {
+          "value": {
+            "=": "EventEnd"
+          },
+          "indexNo": 4,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..EventEnd",
+          "type": "cds.Timestamp",
+          "@cds.persistence.name": "EVENTEND"
+        },
+        "MaxParticipants": {
+          "value": {
+            "=": "MaxParticipants"
+          },
+          "indexNo": 5,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..MaxParticipants",
+          "type": "cds.Integer",
+          "notNull": true,
+          "@cds.persistence.name": "MAXPARTICIPANTS"
+        },
+        "HomepageURL": {
+          "value": {
+            "=": "HomepageURL"
+          },
+          "indexNo": 6,
+          "origin": "com.sap.sapmentors.sitregcapm.Event..HomepageURL",
+          "type": "cds.String",
+          "length": 256,
+          "@cds.persistence.name": "HOMEPAGEURL"
+        }
+      },
+      "@cds.persistence.name": "ADMINSERVICE_PARTICIPANTSPEREVENTREAD"
+    },
     "OrganizerService": {
       "kind": "service",
-      "@source": "srv/organizer-service.cds"
+      "@source": "srv\\organizer-service.cds"
     },
     "OrganizerService.EventTypes": {
       "kind": "entity",

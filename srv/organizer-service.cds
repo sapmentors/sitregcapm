@@ -7,8 +7,6 @@ service OrganizerService {
         Capabilities: {
             DeleteRestrictions: {Deletable: false}
         }
-
-
     ) as projection on sitreg.Event;      
     entity Organizers as projection on sitreg.Organizers;
     entity CoOrganizers as projection on sitreg.CoOrganizers;
