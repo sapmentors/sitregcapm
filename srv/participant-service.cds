@@ -31,7 +31,8 @@ service ParticipantService {
             DeleteRestrictions: {Deletable: false}
         }
     ) as projection on sitreg.Tickets;
-        entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
+    
+    entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
         Event: redirected to Events
         
