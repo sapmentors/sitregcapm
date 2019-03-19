@@ -14,20 +14,7 @@ type PrintStatusT   : String(1) enum{ QUEUED = 'Q'; SENT = 'S'; PRINTED = 'P' };
 
 entity EventTypes : sap.common.CodeList { key code : String(1); }
 
-entity RelationsToSAP {
-    key ID : String(1);
-    /**
-    Fieldname Language results in this error in the cds run output:
-    An error occurred: An error occurred during serialization of the entity collection
-    And this error when calling the OData Endpoint:
-    An error occurred during serialization of the entity collection An error occurred 
-    during serialization of the entity at index #0 in the entity collection The entity 
-    contains 'LANGUAGE' property, which does not belong neither to the structural nor 
-    to the navigation properties of the 'RelationsToSAP' type
-    */ 
-    key lang : LanguageCode;
-    description  : String(250);
-};
+entity RelationsToSAP : sap.common.CodeList { key code : String(1); };
 
 entity Events: managed {
     key ID                  : Integer; 
@@ -76,7 +63,7 @@ entity Participants: managed{
         receipt          : Boolean;
         receiptCompany   : String(256);
         receiptAddress   : LargeString;
-        tickets          : Association to many Tickets on tickets.participants = $self;
+        tickets          : Association to one Tickets on tickets.participants = $self;
         printQueues      : Association to many PrintQueues on printQueues.participants = $self;
 };
 
