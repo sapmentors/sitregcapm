@@ -9,3 +9,4 @@ _out
 .cds_gen.log
 *.orig
 **/edmx/*
+default-env.json

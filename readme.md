@@ -38,6 +38,49 @@ cds deploy --to sqlite:db/sitregcapm.db
 ```
 Do not forget to refresh the local database whenever you changed the datamodel
 
+### Setup XSUAA
+To be able to use authenticaiton and the defined scopes (authorization) a XSUAA must be set up.
+First compile the CDS to xs-security.json:
+
+```sh
+mkdir gen
+cds srv/ --to xsuaa,json > gen/xs-security.json
+```
+
+now deploy that to your SAP CP Cloud Foundry trial:
+
+```sh
+cf login
+cf create-service xsuaa application sitregcapm-uaa -c gen/xs-security.json
+```
+
+then create the service-key:
+
+```sh
+cf create-service-key sitregcapm-uaa sitregcapm-uaa-key && cf service-key sitregcapm-uaa sitregcapm-uaa-key
+```
+
+Copy & paste the resulting json output in the credentials block:
+
+```json
+{
+    "VCAP_SERVICES": {
+        "xsuaa": [
+            {
+                "name": "xsuaa", "label": "xsuaa", "tags": [ "xsuaa" ],
+                "credentials": {
+                }
+            }
+        ]
+    }
+}
+```
+
+```sh
+cf push sitregcapm --no-start --no-manifest --random-route
+cf bind-service sitregcapm sitregcapm-uaa
+```
+
 ### Recommended Extensions
 Local execution makes use of [SQLite3](https://www.sqlite.org/index.html) as database. To get an insight into the database from visual studio code we recommend to install the [SQLite Extension](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) from the Visual Studio Marketplace   
 
