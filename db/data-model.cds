@@ -16,10 +16,10 @@ abstract entity CodeList {
     descr : localized String(1000) @title:'{i18n>Description}';
 }
 
-entity EventType  : CodeList { key code : String(1); }
+entity EventTypes : CodeList { key code : String(1); }
 
-entity RelationToSAP {
-    key RelationToSAP : String(1);
+entity RelationsToSAP {
+    key RelationsToSAP : String(1);
     /**
     Fieldname Language results in this error in the cds run output:
     An error occurred: An error occurred during serialization of the entity collection
@@ -33,20 +33,20 @@ entity RelationToSAP {
     Description  : String(250);
 };
 
-entity Event: managed {
+entity Events: managed {
     key ID                  : Integer; 
-        Tickets             : Association to many Tickets on Tickets.Event = $self;
-        Participants        : Association to many Participant on Participants.Event = $self;
-        CoOrganizers        : Association to many CoOrganizers on CoOrganizers.Event = $self;
-        Devices             : Association to many Devices on Devices.Event = $self;
-        PrintQueues         : Association to many PrintQueues on PrintQueues.Event = $self;
+        Tickets             : Association to many Tickets on Tickets.Events = $self;
+        Participants        : Association to many Participants on Participants.Events = $self;
+        CoOrganizers        : Association to many CoOrganizers on CoOrganizers.Events = $self;
+        Devices             : Association to many Devices on Devices.Events = $self;
+        PrintQueues         : Association to many PrintQueues on PrintQueues.Events = $self;
         Location            : String(100) not null;
         EventStart          : Timestamp not null;
         EventEnd            : Timestamp;
         MaxParticipants     : Integer not null;
         HomepageURL         : URL;
         Description         : String(100);
-        Type                : Association to EventType;
+        Type                : Association to EventTypes;
         Visible             : Boolean;
         HasPreEveningEvent  : Boolean;
         HasPostEveningEvent : Boolean;
@@ -63,9 +63,9 @@ entity Organizers: managed {
             StatusSetTimeStamp  : Timestamp;   
 };
 
-entity Participant: managed{
+entity Participants: managed{
     key ID               : Integer;
-        Event            : Association to Event;
+        Events            : Association to Events;
         RegistrationTime : DateTime;
         FirstName        : String(100) not null;
         LastName         : String(100) not null;
@@ -76,29 +76,29 @@ entity Participant: managed{
         RSVP             : Boolean not null; 
         PreEveningEvent  : AnswerOption not null; 
         PostEveningEvent : AnswerOption not null; 
-        RelationToSAP    : Association to RelationToSAP;
+        RelationToSAP    : Association to RelationsToSAP;
         Receipt          : Boolean;
         ReceiptCompany   : String(256);
         ReceiptAddress   : LargeString;
-        Tickets          : Association to many Tickets on Tickets.Participant = $self;
-        PrintQueues      : Association to many PrintQueues on PrintQueues.Participant = $self;
+        Tickets          : Association to many Tickets on Tickets.Participants = $self;
+        PrintQueues      : Association to many PrintQueues on PrintQueues.Participants = $self;
 };
 
 entity CoOrganizers : managed {
-        key Event  : Association to Event;
+        key Events  : Association to Events;
         key UserName : User;
             Active   : ActiveT // Y = Yes / N = No
 };
 
 entity Devices : managed {
-        key Event  : Association to Event;
+        key Events  : Association to Events;
         key DeviceID : DeviceT;
             Active   : ActiveT // Y = Yes / N = No
 };
 
 entity PrintQueues : managed {
-        key Participant      : Association to Participant;
-            Event            : Association to Event;
+        key Participants      : Association to Participants;
+            Events            : Association to Events;
             FirstName        : String(100) not null;
             LastName         : String(100) not null;
             Twitter          : String(15);
@@ -106,8 +106,8 @@ entity PrintQueues : managed {
 };
 
 entity Tickets: managed {
-    key Participant      : Association to Participant;
-        Event            : Association to Event;
+    key Participants      : Association to Participants;
+        Events            : Association to Events;
         TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
         SHA256HASH       : HashT;        
 };
