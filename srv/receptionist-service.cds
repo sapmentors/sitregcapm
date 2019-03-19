@@ -35,12 +35,12 @@ service ReceptionistService {
     
     entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
-        Events: redirected to Events
+        events: redirected to Events
         
     };
     entity Devices @readonly as projection on sitreg.Devices{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues @( 
             Capabilities: {
@@ -49,6 +49,6 @@ service ReceptionistService {
         }
     ) as projection on sitreg.PrintQueues{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
 }

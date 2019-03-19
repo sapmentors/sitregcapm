@@ -14,7 +14,7 @@ service AdminService {
     entity Organizers as projection on sitreg.Organizers;
     entity CoOrganizers as projection on sitreg.CoOrganizers{
         *,
-        Events: redirected to Events
+        events: redirected to Events
         
     };
     entity Participants @(        
@@ -26,24 +26,28 @@ service AdminService {
         }
     ) as projection on sitreg.Participants{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity Devices as projection on sitreg.Devices{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues as projection on sitreg.PrintQueues{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity Tickets as projection on sitreg.Tickets{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
-    entity ParticipantsPerEventRead as projection on sitreg.Events{ ID, Location, EventStart, EventEnd, MaxParticipants, HomepageURL} ;
+    entity ParticipantsPerEventRead as projection on sitreg.Events{ 
+        ID, 
+        location, 
+        eventStart, 
+        eventEnd, 
+        maxParticipants, 
+        homepageURL
+    };
 
-
-
-    
 }
 

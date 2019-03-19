@@ -19,20 +19,20 @@ service PublicService {
     ) as projection  on sitreg.Participants;
     entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
-        Events: redirected to Events
+        events: redirected to Events
         
     };
     entity Devices @readonly as projection on sitreg.Devices{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues @readonly as projection on sitreg.PrintQueues{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity Tickets @readonly as projection on sitreg.Tickets{
         *,
-        Events: redirected to Events
+        events: redirected to Events
     };
     entity EventTypes @readonly as projection on sitreg.EventTypes;
     entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;

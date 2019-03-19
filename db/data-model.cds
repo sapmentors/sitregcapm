@@ -1,5 +1,5 @@
 namespace com.sap.sapmentors.sitregcapm;
-using { LanguageCode, Country, managed,User } from '@sap/cds/common';
+using { LanguageCode, Country, managed, User } from '@sap/cds/common';
 
 //General types
 type URL            : String(256);
@@ -29,87 +29,87 @@ entity RelationsToSAP {
     contains 'LANGUAGE' property, which does not belong neither to the structural nor 
     to the navigation properties of the 'RelationsToSAP' type
     */ 
-    key Lang : LanguageCode;
-    Description  : String(250);
+    key lang : LanguageCode;
+    description  : String(250);
 };
 
 entity Events: managed {
     key ID                  : Integer; 
-        Tickets             : Association to many Tickets on Tickets.Events = $self;
-        Participants        : Association to many Participants on Participants.Events = $self;
-        CoOrganizers        : Association to many CoOrganizers on CoOrganizers.Events = $self;
-        Devices             : Association to many Devices on Devices.Events = $self;
-        PrintQueues         : Association to many PrintQueues on PrintQueues.Events = $self;
-        Location            : String(100) not null;
-        EventStart          : Timestamp not null;
-        EventEnd            : Timestamp;
-        MaxParticipants     : Integer not null;
-        HomepageURL         : URL;
-        Description         : String(100);
-        Type                : Association to EventTypes;
-        Visible             : Boolean;
-        HasPreEveningEvent  : Boolean;
-        HasPostEveningEvent : Boolean;
+        tickets             : Association to many Tickets on tickets.events = $self;
+        participants        : Association to many Participants on participants.events = $self;
+        coOrganizers        : Association to many CoOrganizers on coOrganizers.events = $self;
+        devices             : Association to many Devices on devices.events = $self;
+        printQueues         : Association to many PrintQueues on printQueues.events = $self;
+        location            : String(100) not null;
+        eventStart          : Timestamp not null;
+        eventEnd            : Timestamp;
+        maxParticipants     : Integer not null;
+        homepageURL         : URL;
+        description         : String(100);
+        type                : Association to EventTypes;
+        visible             : Boolean;
+        hasPreEveningEvent  : Boolean;
+        hasPostEveningEvent : Boolean;
 };
 
 entity Organizers: managed {
         key UserName          	: User;
-            FirstName           : String(100) not null;
-            LastName        	: String(100) not null;
-            EMail            	: String(256) not null;
-            MobilePhone       	: String(25);
-            Status            	: String(1);
-            RequestTimeStamp    : Timestamp;
-            StatusSetTimeStamp  : Timestamp;   
+            firstName           : String(100) not null;
+            lastName        	: String(100) not null;
+            eMail            	: String(256) not null;
+            mobilePhone       	: String(25);
+            status            	: String(1);
+            requestTimeStamp    : Timestamp;
+            statusSetTimeStamp  : Timestamp;   
 };
 
 entity Participants: managed{
     key ID               : Integer;
-        Events            : Association to Events;
-        RegistrationTime : DateTime;
-        FirstName        : String(100) not null;
-        LastName         : String(100) not null;
-        EMail            : String(256) not null;
-        MobilePhone      : String(25);
-        BioURL           : URL;
-        Twitter          : String(15);
-        RSVP             : Boolean not null; 
-        PreEveningEvent  : AnswerOption not null; 
-        PostEveningEvent : AnswerOption not null; 
-        RelationToSAP    : Association to RelationsToSAP;
-        Receipt          : Boolean;
-        ReceiptCompany   : String(256);
-        ReceiptAddress   : LargeString;
-        Tickets          : Association to many Tickets on Tickets.Participants = $self;
-        PrintQueues      : Association to many PrintQueues on PrintQueues.Participants = $self;
+        events           : Association to Events;
+        registrationTime : DateTime;
+        firstName        : String(100) not null;
+        lastName         : String(100) not null;
+        eMail            : String(256) not null;
+        mobilePhone      : String(25);
+        bioURL           : URL;
+        twitter          : String(15);
+        rsvp             : Boolean not null; 
+        preEveningEvent  : AnswerOption not null; 
+        postEveningEvent : AnswerOption not null; 
+        relationToSAP    : Association to RelationsToSAP;
+        receipt          : Boolean;
+        receiptCompany   : String(256);
+        receiptAddress   : LargeString;
+        tickets          : Association to many Tickets on tickets.participants = $self;
+        printQueues      : Association to many PrintQueues on printQueues.participants = $self;
 };
 
 entity CoOrganizers : managed {
-        key Events  : Association to Events;
-        key UserName : User;
-            Active   : ActiveT // Y = Yes / N = No
+        key events   : Association to Events;
+        key userName : User;
+            active   : ActiveT // Y = Yes / N = No
 };
 
 entity Devices : managed {
-        key Events  : Association to Events;
-        key DeviceID : DeviceT;
-            Active   : ActiveT // Y = Yes / N = No
+        key events  : Association to Events;
+        key deviceID : DeviceT;
+            active   : ActiveT // Y = Yes / N = No
 };
 
 entity PrintQueues : managed {
-        key Participants      : Association to Participants;
-            Events            : Association to Events;
-            FirstName        : String(100) not null;
-            LastName         : String(100) not null;
-            Twitter          : String(15);
-            PrintStatus      : PrintStatusT not null; // Q = queued, S = sent, P = printed
+        key participants     : Association to Participants;
+            events           : Association to Events;
+            firstName        : String(100) not null;
+            lastName         : String(100) not null;
+            twitter          : String(15);
+            printStatus      : PrintStatusT not null; // Q = queued, S = sent, P = printed
 };
 
 entity Tickets: managed {
-    key Participants      : Association to Participants;
-        Events            : Association to Events;
-        TicketUsed       : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
-        SHA256HASH       : HashT;        
+    key participants      : Association to Participants;
+        events            : Association to Events;
+        ticketUsed        : TicketUsedT; // See enum TicketUsedT // Y = used, N not used
+        sha256hash        : HashT;        
 };
 
 
