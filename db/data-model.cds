@@ -1,4 +1,6 @@
 namespace com.sap.sapmentors.sitregcapm;
+
+using sap from '@sap/cds/common';
 using { LanguageCode, Country, managed, User } from '@sap/cds/common';
 
 //General types
@@ -10,13 +12,7 @@ type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type ActiveT        : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type PrintStatusT   : String(1) enum{ QUEUED = 'Q'; SENT = 'S'; PRINTED = 'P' };
 
-// @cds.autoexpose @cds.persistence.skip:'if-unused'
-abstract entity CodeList {
-    name  : localized String(255) @title:'{i18n>Name}';
-    descr : localized String(1000) @title:'{i18n>Description}';
-}
-
-entity EventTypes : CodeList { key code : String(1); }
+entity EventTypes : sap.common.CodeList { key code : String(1); }
 
 entity RelationsToSAP {
     key ID : String(1);
