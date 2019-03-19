@@ -19,7 +19,7 @@ abstract entity CodeList {
 entity EventTypes : CodeList { key code : String(1); }
 
 entity RelationsToSAP {
-    key RelationsToSAP : String(1);
+    key ID : String(1);
     /**
     Fieldname Language results in this error in the cds run output:
     An error occurred: An error occurred during serialization of the entity collection
