@@ -8,3 +8,5 @@ _out
 .che/
 .cds_gen.log
 *.orig
+**/edmx/*
+default-env.json

@@ -1,8 +1,8 @@
 using com.sap.sapmentors.sitregcapm as sitreg from '../db/data-model';
 
-service AdminService {
-    entity EventTypes @readonly as projection on sitreg.EventType;
-    entity RelationsToSAP @readonly as projection on sitreg.RelationToSAP;
+service AdminService @(requires:'admin') {
+    entity EventTypes @readonly as projection on sitreg.EventTypes;
+    entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;
     entity Events @(
         Capabilities: {
             InsertRestrictions: {Insertable: false},
@@ -10,11 +10,11 @@ service AdminService {
         }
 
 
-    ) as projection on sitreg.Event;      
+    ) as projection on sitreg.Events;      
     entity Organizers as projection on sitreg.Organizers;
     entity CoOrganizers as projection on sitreg.CoOrganizers{
         *,
-        Event: redirected to Events
+        events: redirected to Events
         
     };
     entity Participants @(        
@@ -24,26 +24,30 @@ service AdminService {
             DeleteRestrictions: {Deletable: false}
 
         }
-    ) as projection on sitreg.Participant{
+    ) as projection on sitreg.Participants{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity Devices as projection on sitreg.Devices{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues as projection on sitreg.PrintQueues{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity Tickets as projection on sitreg.Tickets{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
-    entity ParticipantsPerEventRead as projection on sitreg.Event{ ID, Location, EventStart, EventEnd, MaxParticipants, HomepageURL} ;
+    entity ParticipantsPerEventRead as projection on sitreg.Events{ 
+        ID, 
+        location, 
+        eventStart, 
+        eventEnd, 
+        maxParticipants, 
+        homepageURL
+    };
 
-
-
-    
 }
 

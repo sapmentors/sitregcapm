@@ -1,15 +1,15 @@
 using com.sap.sapmentors.sitregcapm as sitreg from '../db/data-model';
 
 service ReceptionistService {
-    entity EventTypes @readonly as projection on sitreg.EventType;
-    entity RelationsToSAP @readonly as projection on sitreg.RelationToSAP;
+    entity EventTypes @readonly as projection on sitreg.EventTypes;
+    entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;
     entity Events @( 
             Capabilities: {
             InsertRestrictions: {Insertable: false},
             UpdateRestrinctions: {Updatable: false},
             DeleteRestrictions: {Deletable: false}
         }
-    ) as projection on sitreg.Event;
+    ) as projection on sitreg.Events;
 
     entity Organizers @( 
             Capabilities: {
@@ -24,7 +24,7 @@ service ReceptionistService {
             UpdateRestrinctions: {Updatable: false},    
             DeleteRestrictions: {Deletable: false}
         }
-    ) as projection on sitreg.Participant;
+    ) as projection on sitreg.Participants;
 
     entity Tickets @( 
             Capabilities: {
@@ -35,12 +35,12 @@ service ReceptionistService {
     
     entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
-        Event: redirected to Events
+        events: redirected to Events
         
     };
     entity Devices @readonly as projection on sitreg.Devices{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues @( 
             Capabilities: {
@@ -49,6 +49,6 @@ service ReceptionistService {
         }
     ) as projection on sitreg.PrintQueues{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
 }

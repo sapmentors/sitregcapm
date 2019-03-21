@@ -1,4 +1,4 @@
-RelationToSAP;Lang;Description
+code;locale;name
 O;en;Other
 C;en;Customer
 P;en;Partner

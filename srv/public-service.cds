@@ -7,7 +7,7 @@ service PublicService {
             UpdateRestrinctions: {Updatable: false},
             DeleteRestrictions: {Deletable: false}
         }
-    ) as projection on sitreg.Event;
+    ) as projection on sitreg.Events;
 
 
     entity Participants @( 
@@ -16,24 +16,24 @@ service PublicService {
             UpdateRestrinctions: {Updatable: false},
             DeleteRestrictions: {Deletable: false}
         }
-    ) as projection  on sitreg.Participant;
+    ) as projection  on sitreg.Participants;
     entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
-        Event: redirected to Events
+        events: redirected to Events
         
     };
     entity Devices @readonly as projection on sitreg.Devices{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity PrintQueues @readonly as projection on sitreg.PrintQueues{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
     entity Tickets @readonly as projection on sitreg.Tickets{
         *,
-        Event: redirected to Events
+        events: redirected to Events
     };
-    entity EventTypes @readonly as projection on sitreg.EventType;
-    entity RelationsToSAP @readonly as projection on sitreg.RelationToSAP;
+    entity EventTypes @readonly as projection on sitreg.EventTypes;
+    entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;
 }
