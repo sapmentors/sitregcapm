@@ -12,9 +12,14 @@ type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type ActiveT        : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type PrintStatusT   : String(1) enum{ QUEUED = 'Q'; SENT = 'S'; PRINTED = 'P' };
 
-entity EventTypes : sap.common.CodeList { key code : String(1); }
+abstract entity CodeList {	
+    name  : localized String(255) @title:'{i18n>Name}';	
+    descr : localized String(1000) @title:'{i18n>Description}';	
+}
 
-entity RelationsToSAP : sap.common.CodeList { key code : String(1); };
+entity EventTypes : CodeList { key code : String(1); }
+
+entity RelationsToSAP : CodeList { key code : String(1); };
 
 entity Events: managed {
     key ID                  : Integer; 
