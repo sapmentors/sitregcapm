@@ -59,22 +59,6 @@ then create the service-key:
 ```sh
 cf create-service-key sitregcapm-uaa sitregcapm-uaa-key && cf service-key sitregcapm-uaa sitregcapm-uaa-key
 ```
-TODO This step is not clear
-Copy & paste the resulting json output in the credentials block:
-
-```json
-{
-    "VCAP_SERVICES": {
-        "xsuaa": [
-            {
-                "name": "xsuaa", "label": "xsuaa", "tags": [ "xsuaa" ],
-                "credentials": {
-                }
-            }
-        ]
-    }
-}
-```
 
 ```sh
 cf push sitregcapm --no-start --no-manifest --random-route
