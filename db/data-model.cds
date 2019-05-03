@@ -1,7 +1,7 @@
 namespace com.sap.sapmentors.sitregcapm;
 
 using sap from '@sap/cds/common';
-using { LanguageCode, Country, managed, User } from '@sap/cds/common';
+using { Language, Country, managed, User } from '@sap/cds/common';
 
 //General types
 type URL            : String(256);

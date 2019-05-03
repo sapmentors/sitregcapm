@@ -9,7 +9,7 @@
   },
   "files": [],
   "dependencies": {
-    "@sap/cds": "^3.5.2",
+    "@sap/cds": "^3.7.1",
     "express": "^4.16.4"
   },
   "scripts": {
