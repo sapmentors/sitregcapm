@@ -2,5 +2,18 @@
     "build": {
         "target": ".",
         "tasks": []
-    }
+    },
+    "auth": {
+        "passport": {
+          "strategy": "mock",
+          "users": {
+            "administrator": {
+              "jwt": {
+                "userInfo": { "logonName": "admin@example.com" },
+                "scopes": ["admin"]
+              }
+            }
+          }
+        }
+      }
 }
