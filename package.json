@@ -18,7 +18,7 @@
     "deploy": "cds deploy"
   },
   "devDependencies": {
-    "sqlite3": "^4.0.6"
+    "sqlite3": "^4.0.8"
   },
   "cds": {
     "requires": {
