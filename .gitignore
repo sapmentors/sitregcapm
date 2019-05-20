@@ -10,3 +10,4 @@ _out
 *.orig
 **/edmx/*
 default-env.json
+.testresults

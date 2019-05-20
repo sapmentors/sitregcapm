@@ -10,15 +10,23 @@
   "files": [],
   "dependencies": {
     "@sap/cds": "^3.7.1",
-    "express": "^4.16.4"
+    "express": "^4.17.0"
   },
   "scripts": {
     "start": "cds run",
     "build": "cds build/all --clean",
+    "test": "node ./node_modules/gulp/bin/gulp test",
+    "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
     "deploy": "cds deploy"
   },
   "devDependencies": {
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.0.8",
+    "gulp": "3.9.1",
+    "supertest": "latest",
+    "gulp-replace": "0.5.4",
+    "jasmine-reporters": "2.1.1",
+    "gulp-jasmine": "2.4.1",
+    "gulp-istanbul": "1.1.1"
   },
   "cds": {
     "requires": {
