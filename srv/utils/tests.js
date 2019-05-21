@@ -3,15 +3,9 @@ module.exports = {
     getExpress: (secure = false) => {
 		const cds = require("@sap/cds")
         const express = require("express")
-        
         const app = express()
-        cds.serve('all')
-            .from('srv/')
-            .in(app)
-            .catch((err) => {
-				console.log(err);
-				//			process.exit(1);
-			})
+        const csn = cds.load('srv/gen/csn.json')
+        cds.serve('all').from(csn).in(app)
         return app
 	}
 };
