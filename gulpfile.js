@@ -50,7 +50,7 @@ var coverageResultFile = timestamp + "_coverage.json";
  * Instrument the test/productive code
  */
 gulp.task("instrumentation", function() {
-    return gulp.src(includedScripts.concat(defaultExclusion))
+    return gulp.src(includedScripts.concat(defaultExclusion), { allowEmpty: true })
     // Covering files
         .pipe(istanbul({
             includeUntested: true // instrument all files
@@ -63,9 +63,9 @@ gulp.task("instrumentation", function() {
  * Execute tests with coverage information, requires instrumentation
  * before tests are executed
  */
-gulp.task("jasmine-istanbul", ["instrumentation"], function() {
+gulp.task("jasmine-istanbul", gulp.series('instrumentation', function() {
     // run all tests ending with "spec", skip all tests that are part of the node_modules
-    return gulp.src(["**/*spec.js", "!**/node_modules/**"])
+    return gulp.src(["**/*spec.js", "!**/node_modules/**"], { allowEmpty: true })
         .pipe(jasmine({
             errorOnFail: false,
             // use the standard junit xml reporter
@@ -85,14 +85,14 @@ gulp.task("jasmine-istanbul", ["instrumentation"], function() {
                 }
             }
         }));
-});
+}));
 
 /**
  * Execute tests without coverage information
  */
 gulp.task("jasmine", function() {
     // run all tests ending with "spec", skip all tests that are part of the node_modules
-    return gulp.src(["**/*spec.js", "!**/node_modules/**"])
+    return gulp.src(["**/*spec.js", "!**/node_modules/**"], { allowEmpty: true })
         .pipe(jasmine({
             errorOnFail: false,
             // use the standard junit xml reporter
@@ -112,21 +112,22 @@ function postProcessing() {
         path.join(testResultsDir, testResultFile),
         path.join(testResultsDir, coverageResultFile)
     ], {
-        dot: true
+        dot: true,
+        allowEmpty: true
     })
         .pipe(replace(__dirname, ""))
         .pipe(gulp.dest(testResultsDir));
 }
 
 // run tests with coverage analysis
-gulp.task("test-coverage",  ["jasmine-istanbul"], function() {
+gulp.task("test-coverage", gulp.series('jasmine-istanbul', function() {
     return postProcessing();
-});
+}));
 
 // only run the tests, skip test coverage analysis
-gulp.task("test", ["jasmine"], function() {
+gulp.task("test", gulp.series('jasmine', function() {
     return postProcessing();
-});
+}));
 
 //the default task is to run tests with coverage analysis
-gulp.task("default", ["test-coverage"]);
+gulp.task("default", gulp.series('test-coverage', function() {}));

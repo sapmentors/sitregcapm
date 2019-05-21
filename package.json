@@ -20,13 +20,13 @@
     "deploy": "cds deploy"
   },
   "devDependencies": {
-    "sqlite3": "^4.0.8",
-    "gulp": "3.9.1",
-    "supertest": "latest",
+    "gulp": "^4.0.2",
+    "gulp-istanbul": "^1.1.3",
+    "gulp-jasmine": "2.4.1",
     "gulp-replace": "0.5.4",
     "jasmine-reporters": "2.1.1",
-    "gulp-jasmine": "2.4.1",
-    "gulp-istanbul": "1.1.1"
+    "sqlite3": "^4.0.8",
+    "supertest": "latest"
   },
   "cds": {
     "requires": {
