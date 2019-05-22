@@ -1,6 +1,6 @@
 using com.sap.sapmentors.sitregcapm as sitreg from '../db/data-model';
 
-service PublicService {
+service PublicService @(requires: 'any') {
     entity Events @( 
             Capabilities: {
             InsertRestrictions: {Insertable: false},
