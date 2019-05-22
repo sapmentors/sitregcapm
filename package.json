@@ -9,8 +9,9 @@
   },
   "files": [],
   "dependencies": {
-    "@sap/cds": "^3.7.1",
-    "express": "^4.17.0"
+    "@sap/cds": "^3.10.0",
+    "express": "^4.17.0",
+    "passport": "^0.4.0"
   },
   "scripts": {
     "start": "cds run",
