@@ -1,9 +1,9 @@
 const app = require('express')()
 // const helmet = require('helmet')
-// const compress = require('compress')
+const compression = require('compression')
 const cds = require('@sap/cds')
 
-// app.use(compress({size: '1b'}))
+app.use(compression({threshold: '512b'}))
 /*
 if (process.env.NODE_ENV === 'production') {
 
