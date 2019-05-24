@@ -5,6 +5,11 @@ describe(__filename, () => {
     this.test = require("../utils/tests");
     this.app = this.test.getExpress();
 
+    beforeAll((done) => {
+        Promise.all(this.app.loaded)
+            .then(() => done())
+    })
+
     describe("OData V4 Service", () => {
         it("returns a JSON payload", (done) => {
           request(this.app)

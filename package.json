@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "cds run",
+    "start-local": "node srv/server.js",
     "build": "cds build/all --clean",
     "test": "node ./node_modules/gulp/bin/gulp test",
     "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
