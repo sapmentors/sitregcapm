@@ -1,7 +1,7 @@
 namespace com.sap.sapmentors.sitregcapm;
 
 using sap from '@sap/cds/common';
-using { Language, Country, managed, User } from '@sap/cds/common';
+using { Language, Country, managed, User, sap.common.CodeList as CodeList } from '@sap/cds/common';
 
 //General types
 type URL            : String(256);
@@ -12,10 +12,6 @@ type TicketUsedT    : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type ActiveT        : String(1) enum{ YES = 'Y'; NO = 'N'; };
 type PrintStatusT   : String(1) enum{ QUEUED = 'Q'; SENT = 'S'; PRINTED = 'P' };
 
-abstract entity CodeList {	
-    name  : localized String(255) @title:'{i18n>Name}';	
-    descr : localized String(1000) @title:'{i18n>Description}';	
-}
 
 entity EventTypes : CodeList { key code : String(1); }
 
