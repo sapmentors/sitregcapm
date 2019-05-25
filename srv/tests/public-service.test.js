@@ -18,5 +18,16 @@ describe(__filename, () => {
         .expect('Content-Type', 'application/json;odata.metadata=minimal')
         .end(error => (error ? done.fail(error) : done()))
     })
+    it('returns a list of RelationsToSAP', done => {
+      request(this.app)
+        .get('/public/RelationsToSAP')
+        .expect(200)
+        .expect('Content-Type', 'application/json;odata.metadata=minimal')
+        .end(function (err, res) {
+          if (err) return done(err)
+          expect(res.body.value.length).toBeGreaterThan(1)
+          done()
+        })
+    })
   })
 })
