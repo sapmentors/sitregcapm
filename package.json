@@ -18,19 +18,16 @@
   "scripts": {
     "start": "cds run",
     "start-local": "node srv/server.js",
-    "format": "prettier-standard '**/*.js'",    
+    "format": "prettier-standard '**/*.js'",
     "build": "cds build/all --clean",
-    "test": "node ./node_modules/gulp/bin/gulp test",
+    "test": "standard && jest",
+    "jest": "jest",
     "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
     "deploy": "cds deploy"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-istanbul": "^1.1.3",
-    "gulp-jasmine": "2.4.1",
-    "gulp-replace": "0.5.4",
     "husky": "^2.3.0",
-    "jasmine-reporters": "2.1.1",
+    "jest": "^24.8.0",
     "prettier-standard": "^9.1.1",
     "sqlite3": "^4.0.8",
     "standard": "^12.0.1",
@@ -55,5 +52,10 @@
       "pre-commit": "npm run format && npm test",
       "pre-push": "npm run format && npm test"
     }
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   }
 }

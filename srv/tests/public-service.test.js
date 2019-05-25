@@ -1,4 +1,5 @@
 'use strict'
+
 // use test spec file name as description to allow navigation from the test results view
 describe(__filename, () => {
   const request = require('supertest')
