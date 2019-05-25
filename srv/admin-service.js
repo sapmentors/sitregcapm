@@ -1,3 +1,1 @@
-module.exports = (srv) => {
-
-}
+module.exports = srv => {}
