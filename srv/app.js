@@ -58,5 +58,18 @@ app.loaded.push(
     .at('public/')
     .catch(console.error)
 )
-
+app.loaded.push(
+  cds
+    .serve('ParticipantService', {})
+    .in(app)
+    .at('participant/')
+    .catch(console.error)
+)
+app.loaded.push(
+  cds
+    .serve('ReceptionistService', {})
+    .in(app)
+    .at('receptionist/')
+    .catch(console.error)
+)
 module.exports = app

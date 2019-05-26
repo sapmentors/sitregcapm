@@ -1,6 +1,6 @@
 using com.sap.sapmentors.sitregcapm as sitreg from '../db/data-model';
 
-service ParticipantService {
+service ParticipantService @(requires:'participant') {
     entity EventTypes @readonly as projection on sitreg.EventTypes;
     entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;
     entity Events @( 
