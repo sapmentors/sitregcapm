@@ -10,11 +10,11 @@ describe(__filename, () => {
     Promise.all(this.app.loaded).then(() => done())
   })
 
-  describe('OData V4 Service for the administrator', () => {
-    it('returns a JSON payload', done => {
+  describe('OData V4 Service for the organizer', () => {
+    xit('returns a JSON payload', done => {
       request(this.app)
-        .get('/admin')
-        .auth('administrator', '')
+        .get('/organizer')
+        .auth('organizer', '')
         .expect(200)
         .expect('Content-Type', 'application/json;odata.metadata=minimal')
         .end(error => (error ? done.fail(error) : done()))

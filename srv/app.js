@@ -15,7 +15,26 @@ app.loaded = []
 
 app.loaded.push(
   cds
-    .serve('./srv/admin-service', {
+    .serve('OrganizerService', {
+      passport: {
+        strategy: 'mock',
+        users: {
+          organizer: {
+            jwt: {
+              userInfo: { logonName: 'organizer@example.com' },
+              scopes: ['organizer']
+            }
+          }
+        }
+      }
+    })
+    .in(app)
+    .at('organizer/')
+)
+
+app.loaded.push(
+  cds
+    .serve('AdminService', {
       passport: {
         strategy: 'mock',
         users: {
@@ -31,9 +50,10 @@ app.loaded.push(
     .in(app)
     .at('admin/')
 )
+
 app.loaded.push(
   cds
-    .serve('./srv/public-service', {})
+    .serve('PublicService', {})
     .in(app)
     .at('public/')
     .catch(console.error)

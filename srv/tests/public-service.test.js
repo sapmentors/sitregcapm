@@ -10,7 +10,7 @@ describe(__filename, () => {
     Promise.all(this.app.loaded).then(() => done())
   })
 
-  describe('OData V4 Service', () => {
+  describe('OData V4 Service for anonymous', () => {
     it('returns a JSON payload', done => {
       request(this.app)
         .get('/public')
