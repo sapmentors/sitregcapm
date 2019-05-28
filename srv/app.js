@@ -2,6 +2,8 @@ const app = require('express')()
 const helmet = require('helmet')
 const compression = require('compression')
 const cds = require('@sap/cds')
+// needed to support i18n with sqlite
+cds.options = { kind: 'sqlite' }
 
 app.use(helmet())
 app.use(compression({ threshold: '512b' }))
@@ -60,14 +62,38 @@ app.loaded.push(
 )
 app.loaded.push(
   cds
-    .serve('ParticipantService', {})
+    .serve('ParticipantService', {
+      passport: {
+        strategy: 'mock',
+        users: {
+          participant: {
+            jwt: {
+              userInfo: { logonName: 'participant@example.com' },
+              scopes: ['participant']
+            }
+          }
+        }
+      }
+    })
     .in(app)
     .at('participant/')
     .catch(console.error)
 )
 app.loaded.push(
   cds
-    .serve('ReceptionistService', {})
+    .serve('ReceptionistService', {
+      passport: {
+        strategy: 'mock',
+        users: {
+          receptionist: {
+            jwt: {
+              userInfo: { logonName: 'receptionist@example.com' },
+              scopes: ['receptionist']
+            }
+          }
+        }
+      }
+    })
     .in(app)
     .at('receptionist/')
     .catch(console.error)

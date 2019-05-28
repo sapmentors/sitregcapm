@@ -11,7 +11,7 @@ describe(__filename, () => {
   })
 
   describe('OData V4 Service for the administrator', () => {
-    it('returns a JSON payload', done => {
+    xit('returns a JSON payload', done => {
       request(this.app)
         .get('/admin')
         .auth('administrator', '')

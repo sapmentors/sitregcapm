@@ -29,5 +29,17 @@ describe(__filename, () => {
           done()
         })
     })
+    it('Check if RelationsToSAP is returned in German', done => {
+      request(this.app)
+        .get('/public/RelationsToSAP?sap-language=de')
+        .auth('administrator', '')
+        .expect(200)
+        .expect('Content-Type', 'application/json;odata.metadata=minimal')
+        .end(function (err, res) {
+          if (err) return done(err)
+          expect(res.body.value[0].name).toBe('Sonstige')
+          done()
+        })
+    })
   })
 })
