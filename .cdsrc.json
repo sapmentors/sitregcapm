@@ -2,5 +2,55 @@
     "build": {
         "target": ".",
         "tasks": []
+    },
+    "authx": {
+        "passport": {
+            "strategy": "mock",
+            "users": {
+                "administrator": {
+                    "jwt": {
+                        "userInfo": {
+                            "logonName": "admin@example.com"
+                        },
+                        "scopes": [
+                            "admin",
+                            "participant",
+                            "organizer",
+                            "receptionist"
+                        ]
+                    }
+                },
+                "participant": {
+                    "jwt": {
+                        "userInfo": {
+                            "logonName": "participant@example.com"
+                        },
+                        "scopes": [
+                            "participant"
+                        ]
+                    }
+                },
+                "organizer": {
+                    "jwt": {
+                        "userInfo": {
+                            "logonName": "organizer@example.com"
+                        },
+                        "scopes": [
+                            "organizer"
+                        ]
+                    }
+                },
+                "receptionist": {
+                    "jwt": {
+                        "userInfo": {
+                            "logonName": "receptionist@example.com"
+                        },
+                        "scopes": [
+                            "receptionist"
+                        ]
+                    }
+                }
+            }
+        }
     }
 }
