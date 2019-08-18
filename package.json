@@ -10,6 +10,7 @@
   "files": [],
   "dependencies": {
     "@sap/cds": "^3.13.0",
+    "hdb": "^0.17.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "helmet": "^3.19.0",
@@ -35,6 +36,13 @@
   },
   "cds": {
     "requires": {
+      "dbprod": {
+        "kind": "hana",
+        "model": [
+          "db",
+          "srv"
+        ]
+      },
       "db": {
         "kind": "sqlite",
         "model": [
@@ -44,6 +52,9 @@
         "credentials": {
           "database": "db/sitregcapm.db"
         }
+      },
+      "odata": {
+        "version": "v4"
       }
     }
   },

@@ -1,0 +1,57 @@
+{
+  "xsappname": "sitregcapm",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.admin",
+      "description": "admin"
+    },
+    {
+      "name": "$XSAPPNAME.organizer",
+      "description": "organizer"
+    },
+    {
+      "name": "$XSAPPNAME.participant",
+      "description": "participant"
+    },
+    {
+      "name": "$XSAPPNAME.receptionist",
+      "description": "receptionist"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "admin",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.admin"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "organizer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.organizer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "participant",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.participant"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "receptionist",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.receptionist"
+      ],
+      "attribute-references": []
+    }
+  ]
+}
