@@ -11,3 +11,4 @@ _out
 **/edmx/*
 default-env.json
 .testresults
+mta_archives/

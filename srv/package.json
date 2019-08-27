@@ -1,0 +1,35 @@
+{
+    "name": "sitregcapm-srv",
+    "description": "Generated from ../package.json, do not change!",
+    "version": "1.0.0",
+    "dependencies": {
+        "@sap/cds": "^3.13.0",
+        "@sap/xsenv": "^2.0.0",
+        "@sap/xssec": "^2.2.2",
+        "express": "^4.17.1",
+        "hdb": "^0.17.0",
+        "compression": "^1.7.4",
+        "helmet": "^3.19.0",
+        "passport": "^0.4.0"
+    },
+    "engines": {
+        "node": "^8.9",
+        "npm": "^6"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "postinstall": "npm dedupe && node .build.js",
+        "start": "node ./node_modules/@sap/cds/bin/cds.js serve gen/csn.json",
+        "start-local": "node server.js",
+        "watch": "nodemon -w . -i node_modules/**,.git/** -e cds -x npm run build"
+    },
+    "private": true,
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "hana",
+                "model": "gen/csn.json"
+            }
+        }
+    }
+}

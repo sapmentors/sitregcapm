@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "",
+  "devDependencies": {
+    "@ui5/cli": "1.4.3",
+    "@sap/ui5-builder-webide-extension": "1.0.2"
+  },
+  "dependencies": {
+    "@sap/approuter": "6.0.1"
+  },
+  "scripts": {
+    "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+    "start": "node node_modules/@sap/approuter/approuter.js"
+  }
+}
