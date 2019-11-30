@@ -9,7 +9,7 @@
   },
   "files": [],
   "dependencies": {
-    "@sap/cds": "^3.18.3",
+    "@sap/cds": "^3.20.1",
     "@sap/hana-client": "^2.4.167",
     "compression": "^1.7.4",
     "express": "^4.17.1",
