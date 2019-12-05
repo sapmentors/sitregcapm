@@ -24,7 +24,7 @@
             }
         ]
     },
-    "authx": {
+    "auth": {
         "passport": {
             "strategy": "mock",
             "users": {
