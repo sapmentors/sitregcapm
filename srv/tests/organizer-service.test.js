@@ -11,7 +11,7 @@ describe(__filename, () => {
   })
 
   describe('OData V4 Service for the organizer', () => {
-    xit('returns a JSON payload', done => {
+    it('returns a JSON payload', done => {
       request(this.app)
         .get('/organizer')
         .auth('organizer', '')

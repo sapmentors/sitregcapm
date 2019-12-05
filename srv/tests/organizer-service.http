@@ -1,0 +1,7 @@
+### Read EventTypes as organizer
+GET http://localhost:4004/organizer/EventTypes
+Authorization: Basic b3JnYW5pemVyOg==
+
+### Read RelationsToSAP as organizer
+http://localhost:4004/organizer/RelationsToSAP
+Authorization: Basic b3JnYW5pemVyOg==
