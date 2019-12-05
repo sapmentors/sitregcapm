@@ -10,6 +10,7 @@
   "files": [],
   "dependencies": {
     "@sap/cds": "^3.20.1",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.4.8",
     "@sap/hana-client": "^2.4.167",
     "compression": "^1.7.4",
     "express": "^4.17.1",
@@ -18,6 +19,7 @@
   },
   "scripts": {
     "start": "cds run",
+    "startv2": "node v2server",
     "start-local": "node srv/server.js",
     "format": "prettier-standard '**/*.js'",
     "build": "cds build/all --clean",
