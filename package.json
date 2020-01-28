@@ -9,13 +9,13 @@
   },
   "files": [],
   "dependencies": {
-    "@sap/cds": "^3.20.1",
-    "@sap/cds-odata-v2-adapter-proxy": "^1.4.8",
-    "@sap/hana-client": "^2.4.167",
+    "@sap/cds": "^3.21.2",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.4.17",
+    "@sap/hana-client": "^2.4.177",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
-    "passport": "^0.4.0"
+    "passport": "^0.4.1"
   },
   "scripts": {
     "start": "cds run",
@@ -29,10 +29,10 @@
     "deploy": "cds deploy"
   },
   "devDependencies": {
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "prettier-standard": "^15.0.1",
-    "sqlite3": "^4.1.0",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "prettier-standard": "^16.1.0",
+    "sqlite3": "^4.1.1",
     "standard": "^14.3.1",
     "supertest": "latest"
   },
