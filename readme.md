@@ -55,35 +55,6 @@ cds deploy --to sqlite:db/sitregcapm.db
 
 Do not forget to repeat this step to initialize the local database whenever you changed the datamodel
 
-### Setup XSUAA
-
-To be able to use authenticaiton and the defined scopes (authorization) a XSUAA must be set up.
-First compile the CDS to xs-security.json:
-
-```sh
-mkdir gen
-cds srv/ --to xsuaa,json > gen/xs-security.json
-```
-
-now deploy that to your SAP CP Cloud Foundry trial:
-
-```sh
-cf login
-cf create-service xsuaa application sitregcapm-uaa -c gen/xs-security.json
-```
-
-then create the service-key:
-
-```sh
-cf create-service-key sitregcapm-uaa sitregcapm-uaa-key && cf service-key sitregcapm-uaa sitregcapm-uaa-key
-```
-
-```sh
-cf push sitregcapm --no-start --no-manifest --random-route
-cf bind-service sitregcapm sitregcapm-uaa
-cf restage sitregcapm
-```
-
 ### Recommended Extensions
 
 Local execution makes use of [SQLite3](https://www.sqlite.org/index.html) as database. To get an insight into the database from visual studio code we recommend to install the [SQLite Extension](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) from the Visual Studio Marketplace
@@ -99,3 +70,21 @@ Here are some additional resources for the SAP Cloud Application Programming Mod
 - [help.sap.com](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/00823f91779d4d42aa29a498e0535cdf.html)
 - [developers.sap.com tutorial](https://developers.sap.com/tutorials/cp-apm-nodejs-create-service.html)
 - [Hands-on SAP dev with qmacro – live stream series](https://blogs.sap.com/2019/01/16/hands-on-sap-dev-with-qmacro-new-live-stream-series/)
+
+## Deploy to SAP Cloud Platform - Cloud foundry
+
+### Prerequisite
+
+- You have a [SAP Cloud Platform Trial account](https://hanatrial.ondemand.com/)
+- The [Cloud MTA Build Tool (MBT)](https://sap.github.io/cloud-mta-build-tool/) is installed
+- The [Cloud Foundry commandline tool](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html) is installed
+- The [MultiApps CF CLI Plugin](https://github.com/cloudfoundry-incubator/multiapps-cli-plugin) is installed
+- You've connected using `cf login`to your trial account
+
+### Build
+
+`npm run build:cf`
+
+### Deploy
+
+`npm run deploy:cf`
