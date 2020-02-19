@@ -35,7 +35,6 @@ service ParticipantService @(requires:'participant') {
     entity CoOrganizers @readonly as projection on sitreg.CoOrganizers{
         *,
         events: redirected to Events
-        
     };
     entity Devices @readonly as projection on sitreg.Devices{
         *,

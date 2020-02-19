@@ -8,21 +8,17 @@ service AdminService @(requires:'admin') {
             InsertRestrictions: {Insertable: false},
             DeleteRestrictions: {Deletable: false}
         }
-
-
     ) as projection on sitreg.Events;      
     entity Organizers as projection on sitreg.Organizers;
     entity CoOrganizers as projection on sitreg.CoOrganizers{
         *,
         events: redirected to Events
-        
     };
     entity Participants @(        
         Capabilities: {
             InsertRestrictions: {Insertable: false},
             UpdateRestrinctions: {Updatable: false},
             DeleteRestrictions: {Deletable: false}
-
         }
     ) as projection on sitreg.Participants{
         *,
