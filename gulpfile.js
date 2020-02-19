@@ -163,4 +163,7 @@ gulp.task(
 )
 
 // the default task is to run tests with coverage analysis
-gulp.task('default', gulp.series('test-coverage', function () {}))
+gulp.task(
+  'default',
+  gulp.series('test-coverage', function () {})
+)
