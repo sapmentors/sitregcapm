@@ -1,10 +1,15 @@
 ID: sitregcapm
 _schema-version: "2.1"
 version: 0.0.1
+parameters:
+  enable-parallel-deployments: true
+
 modules:
   - name: sitregcapm-db
     type: hdb
     path: db
+    build-parameters:
+      ignore: ["node_modules/"]
     parameters:
       memory: 256M
       disk-quota: 256M
@@ -13,9 +18,11 @@ modules:
   - name: sitregcapm-srv
     type: nodejs
     path: srv
+    build-parameters:
+      ignore: ["node_modules/"]
     parameters:
       memory: 512M
-      disk-quota: 256M
+      disk-quota: 1024M
     provides:
       - name: srv_api
         properties:
@@ -27,11 +34,12 @@ modules:
   - name: sitregcapm-app
     type: html5
     path: app
+    build-parameters:
+      ignore: ["node_modules/"]
+      builder: npm
     parameters:
        disk-quota: 512M
        memory: 256M
-    build-parameters:
-       builder: npm
     requires:
      - name: sitregcapm-uaa
      - name: srv_api
