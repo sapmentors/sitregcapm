@@ -3,14 +3,14 @@
     "description": "Generated from ../package.json, do not change!",
     "version": "1.0.0",
     "dependencies": {
-        "@sap/cds": "^3.13.0",
-        "@sap/xsenv": "^2.0.0",
-        "@sap/xssec": "^2.2.2",
+        "@sap/cds": "^3.21.3",
+        "@sap/xsenv": "^2.2.0",
+        "@sap/xssec": "^2.2.4",
         "express": "^4.17.1",
-        "hdb": "^0.17.0",
+        "@sap/hana-client": "^2.4.182",
         "compression": "^1.7.4",
-        "helmet": "^3.19.0",
-        "passport": "^0.4.0"
+        "helmet": "^3.21.2",
+        "passport": "^0.4.1"
     },
     "engines": {
         "node": "^8.9",
