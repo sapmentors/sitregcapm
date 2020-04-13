@@ -25,12 +25,15 @@
     "build": "cds build/all --clean",
     "build:cf": "mbt build -p=cf",
     "test": "standard && jest",
-    "jest": "jest",
+    "jest:unit": "jest",
+    "test:system": "node spec/jasmine",
     "debug": "node --nolazy --inspect-brk=9229 ./node_modules/gulp/bin/gulp test",
     "deploy:cf": "cf deploy mta_archives/sitregcapm_0.0.1.mtar",
     "deploy": "cds deploy"
   },
   "devDependencies": {
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.1",
     "husky": "^4.2.5",
     "jest": "^25.3.0",
     "prettier-standard": "^16.2.1",

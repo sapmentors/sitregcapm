@@ -5,3 +5,14 @@ Authorization: Basic b3JnYW5pemVyOg==
 ### Read RelationsToSAP as organizer
 http://localhost:4004/organizer/RelationsToSAP
 Authorization: Basic b3JnYW5pemVyOg==
+
+### Create new Event
+POST http://localhost:4004/v2/organizer/Events
+Authorization: Basic b3JnYW5pemVyOg==
+Content-Type: application/json
+
+{"ID":1,"location":"München","eventStart":"/Date(1475910000000)/","eventEnd":"/Date(1475942400000)/","description":"SAP Inside Track", "maxParticipants": 80}
+
+### Delete Event
+DELETE http://localhost:4004/v2/organizer/Events(1)
+Authorization: Basic b3JnYW5pemVyOg==

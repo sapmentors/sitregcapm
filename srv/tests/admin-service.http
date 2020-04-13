@@ -1,0 +1,3 @@
+### Delete Event
+DELETE http://localhost:4004/v2/admin/Events(1)
+Authorization: Basic YWRtaW5pc3RyYXRvcjo=
