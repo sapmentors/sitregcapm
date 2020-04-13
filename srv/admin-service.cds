@@ -5,8 +5,7 @@ service AdminService @(requires:'admin') {
     entity RelationsToSAP @readonly as projection on sitreg.RelationsToSAP;
     entity Events @(
         Capabilities: {
-            InsertRestrictions: {Insertable: false},
-            DeleteRestrictions: {Deletable: false}
+            InsertRestrictions: {Insertable: false}
         }
     ) as projection on sitreg.Events;      
     entity Organizers as projection on sitreg.Organizers;
