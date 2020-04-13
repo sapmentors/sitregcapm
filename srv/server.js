@@ -1,6 +1,8 @@
-const app = require('./app')
+'use strict'
+
 const cds = require('@sap/cds')
+const proxy = require('@sap/cds-odata-v2-adapter-proxy')
 
-cds.connect()
+cds.on('bootstrap', app => app.use(proxy()))
 
-app.listen(process.env.PORT || 4004)
+module.exports = cds.server
