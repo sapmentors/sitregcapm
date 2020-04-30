@@ -1,24 +1,17 @@
-const request = require('request')
+const axios = require('axios')
 
 exports.createEvent = async (endpoint, data, user, done) => {
-  var body = JSON.stringify(data)
-  // console.log(body)
-  request(
-    {
-      method: 'POST',
-      uri: endpoint,
-      auth: user.auth,
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: body
-    },
-    function (error, response) {
-      if (error) {
-        console.log(error)
-      }
-      expect(response.statusCode).toEqual(201)
-      done()
-    }
-  )
+  const body = JSON.stringify(data)
+    axios.post(endpoint, body, {
+        auth: {username: user.auth.user},
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then( response => {
+        expect(response.status).toEqual(201)
+        done()
+      }).catch( error => {
+        console.log(error);
+      })
 }
