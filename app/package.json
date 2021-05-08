@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "",
   "devDependencies": {
-    "@ui5/cli": "2.0.2",
-    "@sap/ui5-builder-webide-extension": "1.0.9"
+    "@ui5/cli": "2.10.3",
+    "@sap/ui5-builder-webide-extension": "1.1.4"
   },
   "dependencies": {
-    "@sap/approuter": "7.0.0"
+    "@sap/approuter": "10.2.0"
   },
   "scripts": {
     "build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
